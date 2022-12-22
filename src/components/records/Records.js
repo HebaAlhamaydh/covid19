@@ -15,7 +15,7 @@ export default function Records() {
   const getData = () => {
     axios.get(`https://covid-19server-production.up.railway.app/v1/records`)
       .then((res) => {
-       const fil= res.data.filter((ele) => ele.userId === parseInt(userId))
+       const fil= res.data.filter((ele) => ele.userID === parseInt(userId))
         console.log(fil);
         setRecords(fil);
       })

@@ -20,9 +20,9 @@ export const signin = createAsyncThunk("auth/signin", async (data, thunkApi) => 
       }
     );
   
-    // sessionStorage.setItem('userInfo', JSON.stringify(request.data));
+   
     window.location.href = '/';
-    // sessionStorage.setItem("userInfo",request.data)
+   
     return request.data;
   } catch (err) {
     return rejectWithValue(err.request.response);

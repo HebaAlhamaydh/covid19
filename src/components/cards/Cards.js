@@ -39,7 +39,7 @@ export default function Cards() {
         totalDeaths: record.TotalDeaths,
         totalRecovered: record.TotalRecovered,
         date: record.Date,
-        userId: cookie.load("userID"),
+        userID: cookie.load("userID"),
        
         })
         .then((data) => {

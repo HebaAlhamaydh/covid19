@@ -67,7 +67,6 @@ export default function Signup(props) {
               type="password"
               name="loginUser"
               id="loginUser"
-              minLength={8}
               maxLength={16}
               ref={passwordRef}
               required
