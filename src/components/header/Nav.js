@@ -12,7 +12,7 @@ function Nav() {
   return (
     <div>
 
-      <img alt="h" src={img} width="100%" />
+      <img alt="h" src={img} width="100%" height="400px"/>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{ background: 'rgba(0,0,0)' }}  >
           <Toolbar>

@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+
 import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import {CardActions,CardContent,Grid,Button,Typography} from '@mui/material';
 import axios from 'axios';
 import './cards.css'
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import cookie from "react-cookies";
 
 export default function Cards() {
@@ -39,11 +39,12 @@ export default function Cards() {
         totalDeaths: record.TotalDeaths,
         totalRecovered: record.TotalRecovered,
         date: record.Date,
-        userID: cookie.load("userID"),
+        userId: cookie.load("userID"),
        
         })
         .then((data) => {
           console.log(data.data);
+          toast.success(`added successfully`);
 
         });  
       };
@@ -54,6 +55,7 @@ export default function Cards() {
       <h1>COVID19 Statistics for all countries</h1>
      
         {data?.map((record, index) => (
+          <>
              <Grid  key={index}  item xs={2} sm={4} md={4}>
             < Card key={index} sx={{ maxWidth: 345 }}style={{color: "#f50057"}} className="card">
             <CardContent>
@@ -79,6 +81,8 @@ export default function Cards() {
                 </CardActions>
             </Card>
             </Grid>
+           
+            </>
         ))}
       
     </div>

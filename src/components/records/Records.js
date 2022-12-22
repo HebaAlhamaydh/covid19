@@ -15,7 +15,7 @@ export default function Records() {
   const getData = () => {
     axios.get(`https://covid-19server-production.up.railway.app/v1/records`)
       .then((res) => {
-       const fil= res.data.filter((ele) => ele.userID === parseInt(userId))
+       const fil= res.data.filter((ele) => ele.userId === parseInt(userId))
         console.log(fil);
         setRecords(fil);
       })
@@ -34,15 +34,10 @@ export default function Records() {
        .then((res) => {
          console.log(res.data);
          console.log("Deleted successfully");
-         toast.success(`Deleted successfully`);
            getData();
-        
-     
        });  
      };
    
-    
-
   return userId ? (
     <div>
       <h1>My Records</h1>
@@ -51,9 +46,8 @@ export default function Records() {
         <div>
           {records?.map((record, index) => (
               <>
-                
                   < Card key={index} sx={{ maxWidth: 345 }} style={{ color: "#f50057" }} className="card">
-                    <CardContent style={{ marginTop: "auto" }}>
+                    <CardContent>
                       <Typography gutterBottom variant="h6" component="div">
                         Country:{record.country}
                       </Typography>
@@ -65,7 +59,7 @@ export default function Records() {
                       <Button variant="contained" onClick={()=>handleDeleteRecord(record)} >DELETE</Button>
                     </CardActions>
                   </Card>
-               
+                
               </>
             ))
           }
