@@ -2,6 +2,7 @@
 // import axios from "axios";
 // import cookie from "react-cookies";
 // import { toast } from "react-toastify";
+// import { useSelector, useDispatch } from "react-redux";
 // const url = process.env.REACT_APP_URL;
 
 // // get all
@@ -11,7 +12,7 @@
 //     const { rejectWithValue } = thunkApi;
 
 //     try {
-//       let response = await axios.get(`${url}/records`, {
+//       let response = await axios.get('http://localhost:3030/v1/records', {
 //         headers: {
 //           authorization: `Bearer ${cookie.load("token")}`,
 //         },
@@ -24,13 +25,14 @@
 // );
 // // Add service
 // export const addRecord = createAsyncThunk("records/addRecord", async (arg, thunkApi) => {
-//   const { rejectWithValue } = thunkApi;
+//   const { rejectWithValue,dispatch } = thunkApi;
 //   try {
-//     const req = await axios.post(`${url}/rercord`, arg, {
+//     const req = await axios.post('http://localhost:3030/v1/records', arg, {
 //       headers: {
 //         authorization: `Bearer ${cookie.load("token")}`,
 //       },
 //     });
+//       dispatch(getAllRecords()); 
 //     return req.data;
 //   } catch (error) {
 //     return rejectWithValue(error.response.data);
@@ -38,23 +40,23 @@
 // });
 
 // //// delete selected record
-// export const deleteOneRecord= createAsyncThunk(
-//   "records/deleteOneRecord",
-//   async (id, thunkApi) => {
-//     const { rejectWithValue, dispatch } = thunkApi;
-//     try {
-//       let response = await axios.delete(`${url}/records/${id}`, {
-//         headers: {
-//           authorization: `Bearer ${cookie.load("token")}`,
-//         },
-//       });
-//       dispatch(getMyRecords());
-//       return id;
-//     } catch (error) {
-//       return rejectWithValue(error.response);
-//     }
-//   }
-// );
+// // export const deleteOneRecord= createAsyncThunk(
+// //   "records/deleteOneRecord",
+// //   async (id, thunkApi) => {
+// //     const { rejectWithValue, dispatch } = thunkApi;
+// //     try {
+// //       let response = await axios.delete(`${url}/records/${id}`, {
+// //         headers: {
+// //           authorization: `Bearer ${cookie.load("token")}`,
+// //         },
+// //       });
+// //       dispatch(getAllRecords());
+// //       return id;
+// //     } catch (error) {
+// //       return rejectWithValue(error.response);
+// //     }
+// //   }
+// // );
 // // My record
 // // export const getMyecords = createAsyncThunk("records/myRecord", async (data, thunkApi) => {
 // //   const { rejectWithValue } = thunkApi;
@@ -97,7 +99,7 @@
    
 //     //****************post****************
 //     [addRecord.fulfilled]: (state, action) => {
-//         state.allServices.push(action.payload);
+//         state.allRecords.push(action.payload);
 //        state.isLoading = false;
 //       toast.error(`${action.payload.status}`, { autoClose: false });
 //     },
@@ -111,19 +113,19 @@
 //     },
 
 //     //************************* delete record///////////////*/
-//     [deleteOneRecord.fulfilled]: (state, action) => {
-//       state.isLoading = false;
-//       state.error = null;
-//       toast.success(`Deleted successfully`);
-//     },
-//     [deleteOneRecord.pending]: (state, action) => {
-//       state.isLoading = true;
-//       state.error = null;
-//     },
-//     [deleteOneRecord.rejected]: (state, action) => {
-//       state.error = action.payload;
-//       state.isLoading = false;
-//     },
+//   //   [deleteOneRecord.fulfilled]: (state, action) => {
+//   //     state.isLoading = false;
+//   //     state.error = null;
+//   //     toast.success(`Deleted successfully`);
+//   //   },
+//   //   [deleteOneRecord.pending]: (state, action) => {
+//   //     state.isLoading = true;
+//   //     state.error = null;
+//   //   },
+//   //   [deleteOneRecord.rejected]: (state, action) => {
+//   //     state.error = action.payload;
+//   //     state.isLoading = false;
+//   //   },
 //   },
 // });
 

@@ -1,18 +1,26 @@
-
+import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import {CardActions,CardContent,Grid,Button,Typography} from '@mui/material';
-import { Link, useNavigate } from "react-router-dom";
+
 import axios from 'axios';
 import './cards.css'
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+
+import { addRecord,getAllRecords } from '../../store/records';
+import cookie from "react-cookies";
 
 export default function Cards() {
   
+  // const { allRecords, isLoading } = useSelector((state) => state.servicesSlice);
+  const dispatch = useDispatch();
+
+ 
+
     const [data, setData] = useState([]);
-    const [userInfo, setUserInfo] = useState(
-      JSON.parse(sessionStorage.getItem("userInfo")) || []
-    );
+    // const [userInfo, setUserInfo] = useState(
+    //   JSON.parse(sessionStorage.getItem("userInfo")) || []
+    // );
 
     const fetchRecords = () => {
         axios
@@ -29,33 +37,34 @@ export default function Cards() {
       useEffect(() => {
         fetchRecords();
       }, []);
-
-      const navigate=useNavigate();
+//////////////////////////AddToRecord //////////////////
+      // const navigate=useNavigate();
       const handleAddToRecord = async (record) => {
-        console.log(userInfo);
-        if(userInfo.id)
+     console.log(record);
+ 
         axios
-          .post('https://covid-19server-production.up.railway.app/v1/records', {
-            country: record.Country,
-            Date: record.Date,
-            userId: userInfo.id,
-          })
-          .then((data) => {
-            console.log(data.data);
-            toast.success("Added Successfuly")
-          });
-          else
-          navigate("/signin",{redirect:"/country"})
-      };
+        .post("https://covid-19server-production.up.railway.app/v1/records", {
+        country: record.Country,
+        totalConfirmed: record.TotalConfirmed,
+        totalDeaths: record.TotalDeaths,
+        totalRecovered: record.TotalRecovered,
+        date: record.Date,
+        userId: cookie.load("userID"),
+       
+        })
+        .then((data) => {
+          console.log(data.data);
 
+        });  
+      };
+     
    
   return (
     <div>
       <h1>COVID19 Statistics for all countries</h1>
      
-        {data.map((record, index) => (
+        {data?.map((record, index) => (
              <Grid  key={index}  item xs={2} sm={4} md={4}>
-             
             < Card key={index} sx={{ maxWidth: 345 }}style={{color: "#f50057"}} className="card">
             <CardContent>
             <Typography gutterBottom variant="h6" component="div">
@@ -77,9 +86,9 @@ export default function Cards() {
           
      
           <CardActions style={{justifyContent:'center'}}>
-                   <Link to="/records" style={{textDecoration: 'none'}}>
-                    <Button  variant="contained" onSubmit={()=>handleAddToRecord(record)} >ADD TO My Records</Button>
-                    </Link>
+                   
+                    <Button  variant="contained" onClick={()=>handleAddToRecord(record)} >ADD TO My Records</Button>
+                   
                 </CardActions>
             </Card>
             </Grid>

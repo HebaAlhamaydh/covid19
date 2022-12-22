@@ -38,14 +38,14 @@ export default function Home() {
       <h1>World Total Statistics</h1>
 
       <Grid container spacing={3}  justifyContent="center">
-  <Grid item  xs={2} >
-    <Item style={{backgroundColor: '#e91e63',color:'white'}}> TotalConfirmed:{total.TotalConfirmed}</Item>
+  <Grid item  xs={3} >
+    <Item style={{backgroundColor: '#e91e63',color:'white', fontSize:30}}> TotalConfirmed:<small>{total.TotalConfirmed}</small></Item>
   </Grid>
-  <Grid item  xs={2}  >
-    <Item style={{backgroundColor: '#e91e63',color:'white'}}>TotalDeaths:{total.TotalDeaths}</Item>
+  <Grid item  xs={3}  >
+    <Item style={{backgroundColor: '#e91e63',color:'white',fontSize:30}}>TotalDeaths:<small>{total.TotalDeaths}</small></Item>
   </Grid>
-  <Grid item  xs={2}>
-    <Item style={{backgroundColor: '#e91e63',color:'white'}}>TotalRecovered:{total.TotalRecovered}</Item>
+  <Grid item  xs={3}>
+    <Item style={{backgroundColor: '#e91e63',color:'white',fontSize:30}}>TotalRecovered:<small>{total.TotalRecovered}</small></Item>
   </Grid>
 </Grid>  
  <Search/>
