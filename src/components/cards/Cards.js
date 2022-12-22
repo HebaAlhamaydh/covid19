@@ -2,25 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import {CardActions,CardContent,Grid,Button,Typography} from '@mui/material';
-
 import axios from 'axios';
 import './cards.css'
 // import { toast } from 'react-toastify';
-
-import { addRecord,getAllRecords } from '../../store/records';
 import cookie from "react-cookies";
 
 export default function Cards() {
   
-  // const { allRecords, isLoading } = useSelector((state) => state.servicesSlice);
-  const dispatch = useDispatch();
-
- 
-
     const [data, setData] = useState([]);
-    // const [userInfo, setUserInfo] = useState(
-    //   JSON.parse(sessionStorage.getItem("userInfo")) || []
-    // );
+   
 
     const fetchRecords = () => {
         axios
@@ -84,11 +74,8 @@ export default function Cards() {
               </Typography>
           </CardContent>
           
-     
           <CardActions style={{justifyContent:'center'}}>
-                   
                     <Button  variant="contained" onClick={()=>handleAddToRecord(record)} >ADD TO My Records</Button>
-                   
                 </CardActions>
             </Card>
             </Grid>
