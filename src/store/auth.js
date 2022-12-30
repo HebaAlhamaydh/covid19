@@ -21,7 +21,7 @@ export const signin = createAsyncThunk("auth/signin", async (data, thunkApi) => 
     );
   
    
-    window.location.href = '/';
+    window.location.href = '/records';
    
     return request.data;
   } catch (err) {
