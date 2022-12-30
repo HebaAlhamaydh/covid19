@@ -4,7 +4,7 @@ import base64 from "base-64";
 import cookie from "react-cookies";
 import Swal from "sweetalert2";
 
-const url = process.env.REACT_APP_URL;
+const url ="https://covid-19server-production.up.railway.app";
 
 //******signin****//
 export const signin = createAsyncThunk("auth/signin", async (data, thunkApi) => {
