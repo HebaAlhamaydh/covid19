@@ -4,14 +4,14 @@ import base64 from "base-64";
 import cookie from "react-cookies";
 import Swal from "sweetalert2";
 
-const url ="https://covid-19server-production.up.railway.app";
+// const url ="https://covid-19server-production.up.railway.app";
 
 //******signin****//
 export const signin = createAsyncThunk("auth/signin", async (data, thunkApi) => {
   const { rejectWithValue } = thunkApi;
   try {
     const request = await axios.post(
-      `${url}/signin`,
+    "https://covid-19server-production.up.railway.app/signin",
       {},
       {
         headers: {
@@ -34,7 +34,7 @@ export const signin = createAsyncThunk("auth/signin", async (data, thunkApi) => 
 export const signup = createAsyncThunk("auth/signup", async (data, thunkApi) => {
   const { rejectWithValue } = thunkApi;
   try {
-    const request = await axios.post(`${url}/signup`, data);
+    const request = await axios.post("https://covid-19server-production.up.railway.app/signup", data);
     return request.data;
   } catch (err) {
     return rejectWithValue(err.message);
