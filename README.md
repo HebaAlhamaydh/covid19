@@ -1,7 +1,7 @@
 ## COVID-19 FrontEnd
  Webapp which provides the users with all the updates on Covid-19 statistics around the world 
 
-This is the deployed link  ***[deployed link](https://covid19-eight-amber.vercel.app/)***
+This is the deployed link  ***[deployed link](https://covid19-hebaalhamaydh.vercel.app/)***
 
 ## How we build the app 
 
